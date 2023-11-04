@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-type AccountsController interface {
+type OperationTypesController interface {
 	Get(c *gin.Context)
 	ListAll(c *gin.Context)
 	Create(c *gin.Context)
@@ -18,53 +18,53 @@ type AccountsController interface {
 	Delete(c *gin.Context)
 }
 
-type accountsController struct {
-	AccountService services.AccountsService
+type operationTypesController struct {
+	OperationTypeService services.OperationTypesService
 }
 
-func NewAccountsController(service services.AccountsService) AccountsController {
-	return &accountsController{
-		AccountService: service,
+func NewOperationTypeController(service services.OperationTypesService) OperationTypesController {
+	return &operationTypesController{
+		OperationTypeService: service,
 	}
 }
 
-// ListAll Account godoc
-// @Summary List all accounts
-// @Description get accounts
-// @Tags accounts
+// ListAll OperationType godoc
+// @Summary List all operationTypes
+// @Description get operationTypes
+// @Tags operationTypes
 // @Accept  json
 // @Produce  json
-// @Success 200 {array} models.Account
+// @Success 200 {array} models.OperationType
 // @Failure 404 {object} utils.Response
-// @Router /accounts [get]
-func (ac *accountsController) ListAll(c *gin.Context) {
-	account, err := ac.AccountService.ListAllAccount()
+// @Router /operation-types [get]
+func (ac *operationTypesController) ListAll(c *gin.Context) {
+	operationType, err := ac.OperationTypeService.ListAllOperationType()
 	if err != nil {
 		slog.Error(utils.NotFound, err)
 		c.JSON(http.StatusNotFound, utils.Response{Message: utils.NotFound})
 		return
 	}
 
-	if len(account) == 0 {
+	if len(operationType) == 0 {
 		slog.Error(utils.NotFound)
 		c.JSON(http.StatusNotFound, utils.Response{Message: utils.NotFound})
 		return
 	}
 
-	c.JSON(http.StatusOK, account)
+	c.JSON(http.StatusOK, operationType)
 }
 
-// Get Account godoc
-// @Summary Get an account
-// @Description get account by ID
-// @Tags accounts
+// Get OperationType godoc
+// @Summary Get an operationType
+// @Description get operationType by ID
+// @Tags operationTypes
 // @Accept  json
 // @Produce  json
-// @Param id path uint true "Account ID"
-// @Success 200 {object} models.Account
+// @Param id path uint true "OperationType ID"
+// @Success 200 {object} models.OperationType
 // @Failure 404 {object} utils.Response
-// @Router /accounts/{id} [get]
-func (ac *accountsController) Get(c *gin.Context) {
+// @Router /operation-types/{id} [get]
+func (ac *operationTypesController) Get(c *gin.Context) {
 	id := c.Param("id")
 	if id == "" {
 		slog.Error(utils.IDCannotBeEmpty)
@@ -79,61 +79,61 @@ func (ac *accountsController) Get(c *gin.Context) {
 		return
 	}
 
-	account, err := ac.AccountService.GetAccountByID(uint(num))
+	operationType, err := ac.OperationTypeService.GetOperationTypeByID(uint(num))
 	if err != nil {
 		slog.Error(utils.NotFound, err)
 		c.JSON(http.StatusNotFound, utils.Response{Message: utils.NotFound})
 		return
 	}
 
-	c.JSON(http.StatusOK, account)
+	c.JSON(http.StatusOK, operationType)
 }
 
-// Create Account godoc
-// @Summary Create an account
-// @Description create new account
-// @Tags accounts
+// Create OperationType godoc
+// @Summary Create an operationType
+// @Description create new operationType
+// @Tags operationTypes
 // @Accept  json
 // @Produce  json
-// @Param account body models.Account true "Create Account"
-// @Success 201 {object} models.Account
+// @Param operationType body models.OperationType true "Create OperationType"
+// @Success 201 {object} models.OperationType
 // @Failure 400 {object} utils.Response
-// @Router /accounts [post]
-func (ac *accountsController) Create(c *gin.Context) {
-	var account models.Account
+// @Router /operation-types [post]
+func (ac *operationTypesController) Create(c *gin.Context) {
+	var operationType models.OperationType
 
-	if err := c.ShouldBindJSON(&account); err != nil {
+	if err := c.ShouldBindJSON(&operationType); err != nil {
 		slog.Error(err.Error(), err)
 		c.JSON(http.StatusBadRequest, utils.Response{Message: err.Error()})
 		return
 	}
 
-	createdAccount, err := ac.AccountService.CreateAccount(&account)
+	createdOperationType, err := ac.OperationTypeService.CreateOperationType(&operationType)
 	if err != nil {
 		slog.Error(err.Error(), err)
 		c.JSON(http.StatusInternalServerError, utils.Response{Message: err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusCreated, createdAccount)
+	c.JSON(http.StatusCreated, createdOperationType)
 }
 
-// Update Account godoc
-// @Summary Update an account
-// @Description update account by ID
-// @Tags accounts
+// Update OperationType godoc
+// @Summary Update an operationType
+// @Description update operationType by ID
+// @Tags operationTypes
 // @Accept  json
 // @Produce  json
-// @Param id path uint true "Account ID"
-// @Param account body models.Account true "Update Account"
-// @Success 200 {object} models.Account
+// @Param id path uint true "OperationType ID"
+// @Param operationType body models.OperationType true "Update OperationType"
+// @Success 200 {object} models.OperationType
 // @Failure 400 {object} utils.Response
 // @Failure 404 {object} utils.Response
-// @Router /accounts/{id} [put]
-func (ac *accountsController) Update(c *gin.Context) {
-	var account models.Account
+// @Router /operation-types/{id} [put]
+func (ac *operationTypesController) Update(c *gin.Context) {
+	var operationType models.OperationType
 
-	if err := c.ShouldBindJSON(&account); err != nil {
+	if err := c.ShouldBindJSON(&operationType); err != nil {
 		slog.Error(utils.ErrorBindingJSON, err)
 		c.JSON(http.StatusBadRequest, utils.Response{Message: err.Error()})
 		return
@@ -153,37 +153,37 @@ func (ac *accountsController) Update(c *gin.Context) {
 		return
 	}
 
-	account.Id = uint(num)
+	operationType.Id = uint(num)
 
-	_, err = ac.AccountService.GetAccountByID(uint(num))
+	_, err = ac.OperationTypeService.GetOperationTypeByID(uint(num))
 	if err != nil {
 		slog.Error(utils.NotFound, err)
 		c.JSON(http.StatusNotFound, utils.Response{Message: utils.NotFound})
 		return
 	}
 
-	updatedAccount, err := ac.AccountService.UpdateAccount(&account)
+	updatedOperationType, err := ac.OperationTypeService.UpdateOperationType(&operationType)
 	if err != nil {
 		slog.Error(err.Error(), err)
 		c.JSON(http.StatusInternalServerError, utils.Response{Message: err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, updatedAccount)
+	c.JSON(http.StatusOK, updatedOperationType)
 }
 
-// Delete Account godoc
-// @Summary Delete an account
-// @Description delete account by ID
-// @Tags accounts
+// Delete OperationType godoc
+// @Summary Delete an operationType
+// @Description delete operationType by ID
+// @Tags operationTypes
 // @Accept  json
 // @Produce  json
-// @Param id path uint true "Account ID"
+// @Param id path uint true "OperationType ID"
 // @Success 200 {object} utils.Response
 // @Failure 400 {object} utils.Response
 // @Failure 404 {object} utils.Response
-// @Router /accounts/{id} [delete]
-func (ac *accountsController) Delete(c *gin.Context) {
+// @Router /operation-types/{id} [delete]
+func (ac *operationTypesController) Delete(c *gin.Context) {
 	id := c.Param("id")
 	if id == "" {
 		slog.Error(utils.IDCannotBeEmpty)
@@ -198,7 +198,7 @@ func (ac *accountsController) Delete(c *gin.Context) {
 		return
 	}
 
-	err = ac.AccountService.DeleteAccount(uint(num))
+	err = ac.OperationTypeService.DeleteOperationType(uint(num))
 	if err != nil {
 		slog.Error(utils.NotFound, err)
 		c.JSON(http.StatusNotFound, utils.Response{Message: utils.NotFound})

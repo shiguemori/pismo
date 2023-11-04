@@ -6,6 +6,30 @@ definitions:
       id:
         type: integer
     type: object
+  models.OperationType:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+    type: object
+  models.Transaction:
+    properties:
+      account:
+        $ref: '#/definitions/models.Account'
+      account_id:
+        type: integer
+      amount:
+        type: number
+      eventDate:
+        type: string
+      id:
+        type: integer
+      operation_type_id:
+        type: integer
+      operationType:
+        $ref: '#/definitions/models.OperationType'
+    type: object
   utils.Response:
     properties:
       message:
@@ -147,4 +171,270 @@ paths:
       summary: Update an account
       tags:
       - accounts
+  /operation-types:
+    get:
+      consumes:
+      - application/json
+      description: get operationTypes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.OperationType'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: List all operationTypes
+      tags:
+      - operationTypes
+    post:
+      consumes:
+      - application/json
+      description: create new operationType
+      parameters:
+      - description: Create OperationType
+        in: body
+        name: operationType
+        required: true
+        schema:
+          $ref: '#/definitions/models.OperationType'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.OperationType'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Create an operationType
+      tags:
+      - operationTypes
+  /operation-types/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete operationType by ID
+      parameters:
+      - description: OperationType ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Delete an operationType
+      tags:
+      - operationTypes
+    get:
+      consumes:
+      - application/json
+      description: get operationType by ID
+      parameters:
+      - description: OperationType ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OperationType'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Get an operationType
+      tags:
+      - operationTypes
+    put:
+      consumes:
+      - application/json
+      description: update operationType by ID
+      parameters:
+      - description: OperationType ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update OperationType
+        in: body
+        name: operationType
+        required: true
+        schema:
+          $ref: '#/definitions/models.OperationType'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OperationType'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Update an operationType
+      tags:
+      - operationTypes
+  /transactions:
+    get:
+      consumes:
+      - application/json
+      description: get transactions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Transaction'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: List all transactions
+      tags:
+      - transactions
+    post:
+      consumes:
+      - application/json
+      description: create new transaction
+      parameters:
+      - description: Create Transaction
+        in: body
+        name: transaction
+        required: true
+        schema:
+          $ref: '#/definitions/models.Transaction'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Transaction'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Create an transaction
+      tags:
+      - transactions
+  /transactions/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete transaction by ID
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Delete an transaction
+      tags:
+      - transactions
+    get:
+      consumes:
+      - application/json
+      description: get transaction by ID
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Transaction'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Get an transaction
+      tags:
+      - transactions
+    put:
+      consumes:
+      - application/json
+      description: update transaction by ID
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Transaction
+        in: body
+        name: transaction
+        required: true
+        schema:
+          $ref: '#/definitions/models.Transaction'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Transaction'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Update an transaction
+      tags:
+      - transactions
 swagger: "2.0"
