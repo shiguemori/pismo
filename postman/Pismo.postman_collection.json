@@ -161,52 +161,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 5,\n    \"document_number\": \"116744322551\"\n}"
-						},
-						{
-							"name": "Create",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"document_number\": \"{{document_number}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/accounts",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"accounts"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 04 Nov 2023 21:55:55 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "41"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 5,\n    \"document_number\": \"303871227845\"\n}"
 						}
 					]
 				},
@@ -855,15 +809,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 04 Nov 2023 22:04:49 GMT"
+									"value": "Sat, 04 Nov 2023 23:24:15 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "443"
+									"value": "223"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": 3,\n        \"account_id\": 2,\n        \"operation_type_id\": 4,\n        \"amount\": 123.45,\n        \"eventDate\": \"0000-12-31T20:53:32-03:06\",\n        \"Account\": {\n            \"id\": 2,\n            \"document_number\": \"569838454906\"\n        },\n        \"OperationType\": {\n            \"id\": 4,\n            \"description\": \"a random desc601369744350\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"account_id\": 2,\n        \"operation_type_id\": 4,\n        \"amount\": 123.45,\n        \"eventDate\": \"0000-12-31T20:53:32-03:06\",\n        \"Account\": {\n            \"id\": 2,\n            \"document_number\": \"569838454906\"\n        },\n        \"OperationType\": {\n            \"id\": 4,\n            \"description\": \"a random desc601369744350\"\n        }\n    }\n]"
+							"body": "[\n    {\n        \"id\": 1,\n        \"account_id\": 2,\n        \"operation_type_id\": 4,\n        \"amount\": 333.45,\n        \"event_date\": \"2023-11-04T16:01:01-03:00\",\n        \"Account\": {\n            \"id\": 2,\n            \"document_number\": \"775723371990\"\n        },\n        \"OperationType\": {\n            \"id\": 4,\n            \"description\": \"a random desc702471252694\"\n        }\n    }\n]"
 						}
 					]
 				},
@@ -885,7 +839,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45\n}",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"event_date\": \"2023-11-04T19:01:01Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -912,7 +866,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45\n}",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"event_date\": \"2023-11-04T19:01:01Z\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -941,15 +895,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 04 Nov 2023 22:03:26 GMT"
+									"value": "Sat, 04 Nov 2023 23:23:39 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "220"
+									"value": "221"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 4,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"eventDate\": \"0000-12-31T20:53:32-03:06\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"569838454906\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc601369744350\"\n    }\n}"
+							"body": "{\n    \"id\": 1,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"event_date\": \"2023-11-04T16:01:01-03:00\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"775723371990\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc702471252694\"\n    }\n}"
 						}
 					]
 				},
@@ -970,7 +924,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/transactions/3",
+							"raw": "http://localhost:8080/transactions/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -978,7 +932,7 @@
 							"port": "8080",
 							"path": [
 								"transactions",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -989,7 +943,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/transactions/3",
+									"raw": "http://localhost:8080/transactions/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -997,7 +951,7 @@
 									"port": "8080",
 									"path": [
 										"transactions",
-										"3"
+										"1"
 									]
 								}
 							},
@@ -1011,15 +965,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 04 Nov 2023 22:05:02 GMT"
+									"value": "Sat, 04 Nov 2023 23:24:01 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "220"
+									"value": "221"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 3,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"eventDate\": \"0000-12-31T20:53:32-03:06\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"569838454906\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc601369744350\"\n    }\n}"
+							"body": "{\n    \"id\": 1,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45,\n    \"event_date\": \"2023-11-04T16:01:01-03:00\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"775723371990\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc702471252694\"\n    }\n}"
 						}
 					]
 				},
@@ -1041,7 +995,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45\n}",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45,\n    \"event_date\": \"2023-11-04T19:01:01Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1049,7 +1003,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/transactions/3",
+							"raw": "http://localhost:8080/transactions/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1057,7 +1011,7 @@
 							"port": "8080",
 							"path": [
 								"transactions",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -1069,7 +1023,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45\n}",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45,\n    \"event_date\": \"2023-11-04T19:01:01Z\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1077,7 +1031,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/transactions/3",
+									"raw": "http://localhost:8080/transactions/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1085,7 +1039,7 @@
 									"port": "8080",
 									"path": [
 										"transactions",
-										"3"
+										"1"
 									]
 								}
 							},
@@ -1099,15 +1053,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 04 Nov 2023 22:05:26 GMT"
+									"value": "Sat, 04 Nov 2023 23:23:54 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "220"
+									"value": "221"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 3,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45,\n    \"eventDate\": \"0000-12-31T20:53:32-03:06\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"569838454906\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc601369744350\"\n    }\n}"
+							"body": "{\n    \"id\": 1,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 333.45,\n    \"event_date\": \"2023-11-04T16:01:01-03:00\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"775723371990\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"a random desc702471252694\"\n    }\n}"
 						}
 					]
 				},
