@@ -55,7 +55,28 @@ Here you can view the list of available endpoints, their expected request format
 For security and configuration management, the application utilizes environment variables. Ensure you have a .env file at the root of your project with the necessary variables set, such as POSTGRES_USER, POSTGRES_PASSWORD, and POSTGRES_DB.
 
 ### Testing
-in progress 
+Our project comes with a comprehensive test suite designed to ensure the highest standards of quality. To execute the tests and verify that all components behave as expected, follow the steps below:
+
+Run All Tests: To execute all tests across the project, use the following command at the root of the project:
+
+- ```go test ./...```
+  - This will recursively run all tests in all subdirectories.
+
+Test Coverage: To assess the test coverage across the project, you can generate a coverage report by running:
+
+- ```go test ./... -cover```
+    - This command provides a summary of the coverage percentage per file.
+
+Coverage Profile: If you need a detailed coverage report, you can generate a coverage profile with:
+
+- ```go test ./... -coverprofile=coverage.out```
+    - This command creates a file named coverage.out containing the coverage data.
+
+View Coverage in Browser: For a visual representation of the coverage, you can render the coverage profile in HTML format and view it in your web browser:
+- ```go tool cover -html=coverage.out```
+  - This will open a webpage displaying the code coverage, with untested lines highlighted.
+
+By regularly running these tests and analyzing coverage, we can maintain and improve the project's quality over time. Make sure to run the test suite before pushing code changes to ensure that all functionalities are working as intended.
 
 #### Contributing
 Contributions to the project are welcome. Please follow the standard fork and pull request workflow. Ensure that you write or update tests as necessary and adhere to the existing coding style.
