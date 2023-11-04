@@ -78,6 +78,9 @@ View Coverage in Browser: For a visual representation of the coverage, you can r
 
 By regularly running these tests and analyzing coverage, we can maintain and improve the project's quality over time. Make sure to run the test suite before pushing code changes to ensure that all functionalities are working as intended.
 
+### Postman
+The project includes a Postman collection with a set of requests to test the API. You can import the collection into Postman and run the requests directly from the application.
+
 #### Contributing
 Contributions to the project are welcome. Please follow the standard fork and pull request workflow. Ensure that you write or update tests as necessary and adhere to the existing coding style.
 
