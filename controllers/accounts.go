@@ -1,13 +1,15 @@
 package controllers
 
 import (
-	"github.com/gin-gonic/gin"
 	"log/slog"
 	"net/http"
+	"strconv"
+
 	"pismo/models"
 	"pismo/services"
 	"pismo/utils"
-	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
 type AccountsController interface {

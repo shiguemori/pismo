@@ -2,13 +2,15 @@ package config
 
 import (
 	"fmt"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 	"log"
 	"log/slog"
 	"os"
-	"pismo/models"
 	"sync"
+
+	"pismo/models"
+
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var once sync.Once

@@ -1,8 +1,9 @@
 package repositories
 
 import (
-	"gorm.io/gorm"
 	"pismo/models"
+
+	"gorm.io/gorm"
 )
 
 type TransactionsRepository interface {
