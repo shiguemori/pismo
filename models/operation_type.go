@@ -1,6 +1,6 @@
 package models
 
 type OperationType struct {
-	Id          int64
-	Description string
+	ID          uint   `gorm:"primaryKey" json:"id"`
+	Description string `gorm:"type:varchar(255)" json:"description"`
 }

@@ -1,6 +1,6 @@
 package models
 
 type Account struct {
-	Id             int64
-	DocumentNumber int64
+	Id             uint   `gorm:"primaryKey" json:"id,omitempty"`
+	DocumentNumber string `gorm:"type:varchar(255);unique_index" json:"document_number"`
 }
