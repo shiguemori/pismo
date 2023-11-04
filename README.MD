@@ -45,7 +45,7 @@ go run main.go
 ```
 
 ### Accessing the API Documentation
-Once the application is running, the API documentation can be accessed via Swagger UI at the following URL:
+Once the application is running, the API documentation can be accessed through Swagger at the following URL:
 
 - http://localhost:8080/swagger/index.html
 
