@@ -3,6 +3,7 @@ package services
 import (
 	"pismo/models"
 	"pismo/repositories"
+	"time"
 )
 
 type TransactionsService interface {
@@ -32,6 +33,7 @@ func (s *transactionsService) GetTransactionByID(id uint) (*models.Transaction, 
 }
 
 func (s *transactionsService) CreateTransaction(transaction *models.Transaction) (*models.Transaction, error) {
+	transaction.EventDate = time.Now()
 	return s.repo.Create(transaction)
 }
 

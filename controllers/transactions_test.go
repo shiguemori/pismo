@@ -5,11 +5,9 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"testing"
-	"time"
-
 	"pismo/models"
 	"pismo/utils"
+	"testing"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -56,10 +54,9 @@ func (m *MockTransactionsService) ListAllTransaction() ([]models.Transaction, er
 
 func TestListAllTransactions(t *testing.T) {
 	mockService := new(MockTransactionsService)
-	today := time.Now()
 	expectedTransactions := []models.Transaction{
-		{Id: 1, Amount: 100.00, AccountID: 1, OperationTypeID: 1, EventDate: today},
-		{Id: 2, Amount: 200.00, AccountID: 2, OperationTypeID: 2, EventDate: today},
+		{Id: 1, Amount: 100.00, AccountID: 1, OperationTypeID: 1},
+		{Id: 2, Amount: 200.00, AccountID: 2, OperationTypeID: 2},
 	}
 	mockService.On("ListAllTransaction").Return(expectedTransactions, nil)
 
@@ -77,8 +74,7 @@ func TestListAllTransactions(t *testing.T) {
 
 func TestGetTransaction(t *testing.T) {
 	mockService := new(MockTransactionsService)
-	today := time.Now()
-	transaction := &models.Transaction{Id: 1, Amount: 100.00, AccountID: 1, OperationTypeID: 1, EventDate: today}
+	transaction := &models.Transaction{Id: 1, Amount: 100.00, AccountID: 1, OperationTypeID: 1}
 	mockService.On("GetTransactionByID", uint(1)).Return(transaction, nil)
 
 	controller := NewTransactionsController(mockService)
@@ -99,12 +95,10 @@ func TestGetTransaction(t *testing.T) {
 
 func TestCreateTransaction(t *testing.T) {
 	mockService := new(MockTransactionsService)
-	today := time.Now()
 	transaction := &models.Transaction{
 		Amount:          100.00,
 		AccountID:       1,
 		OperationTypeID: 4,
-		EventDate:       today,
 	}
 
 	mockService.On("CreateTransaction", mock.AnythingOfType("*models.Transaction")).Return(transaction, nil)
@@ -115,7 +109,6 @@ func TestCreateTransaction(t *testing.T) {
 		Amount:          100.00,
 		AccountID:       1,
 		OperationTypeID: 4,
-		EventDate:       today,
 	}
 
 	requestBodyBytes, err := json.Marshal(transactionRequestBody)
@@ -139,26 +132,22 @@ func TestCreateTransaction(t *testing.T) {
 
 func TestUpdateTransaction(t *testing.T) {
 	mockService := new(MockTransactionsService)
-	today := time.Now()
 	existingTransaction := &models.Transaction{
 		Id:              1,
 		Amount:          100.00,
 		AccountID:       1,
 		OperationTypeID: 4,
-		EventDate:       today,
 	}
 	updatedTransactionData := &models.Transaction{
 		Amount:          150.00,
 		AccountID:       1,
 		OperationTypeID: 3,
-		EventDate:       today,
 	}
 	updatedTransaction := &models.Transaction{
 		Id:              1,
 		Amount:          150.00,
 		AccountID:       1,
 		OperationTypeID: 3,
-		EventDate:       today,
 	}
 
 	mockService.On("GetTransactionByID", uint(1)).Return(existingTransaction, nil)

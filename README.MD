@@ -94,3 +94,8 @@ Contributions to the project are welcome. Please follow the standard fork and pu
 - phone: +55 11 975676977
 - LinkedIn: https://www.linkedin.com/in/shiguemori-fullstack-dev/
 - Github: https://github.com/shiguemori
+#### Screenshots
+
+![Screenshot 1](./postman/create-account.jpeg)
+![Screenshot 2](./postman/get-account.jpeg)
+![Screenshot 2](./postman/create-transaction.jpeg)
