@@ -96,6 +96,9 @@ Contributions to the project are welcome. Please follow the standard fork and pu
 - Github: https://github.com/shiguemori
 #### Screenshots
 
+##### Create Account
 ![Screenshot 1](./postman/create-account.jpeg)
+##### Get Account
 ![Screenshot 2](./postman/get-account.jpeg)
+##### Create Transaction
 ![Screenshot 2](./postman/create-transaction.jpeg)
