@@ -51,5 +51,5 @@ func main() {
 	transaction.PUT("/:id", transactionController.Update)
 	transaction.DELETE("/:id", transactionController.Delete)
 
-	r.Run() // localhost:8080
+	r.Run()
 }
