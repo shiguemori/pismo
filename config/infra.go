@@ -57,7 +57,9 @@ func NewInfra() *Infra {
 	i := &Infra{}
 	once.Do(func() {
 		i.InitDB()
-		i.SetupTables()
+		if os.Getenv("ENV") == "development" {
+			i.SetupTables() // only for development
+		}
 	})
 	return i
 }

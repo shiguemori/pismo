@@ -21,3 +21,12 @@ CREATE TABLE IF NOT EXISTS transactions (
     FOREIGN KEY(operation_id)
     REFERENCES operation_types(id)
 );
+
+INSERT INTO accounts (document_number) VALUES ('12345678900');
+INSERT INTO accounts (document_number) VALUES ('98765432100');
+INSERT INTO accounts (document_number) VALUES ('55544433322');
+
+INSERT INTO operation_types (description) VALUES ('COMPRA A VISTA');
+INSERT INTO operation_types (description) VALUES ('COMPRA PARCELADA');
+INSERT INTO operation_types (description) VALUES ('SAQUE');
+INSERT INTO operation_types (description) VALUES ('PAGAMENTO');

@@ -29,16 +29,21 @@ git clone https://github.com/shiguemori/pismo.git
 ### 2. Start the Database
 Use docker-compose to spin up the PostgreSQL database container:
 
-```docker-compose up -d postgres```
+```sh
+docker-compose up -d postgres
+```
 
 ### 3. Run the Application
 Navigate to the project directory and run the application with the following command:
 
-```go run main.go```
+```sh
+go run main.go
+```
 
 ### Development Workflow
 During development, you might want to refresh your database and application state. To reset your environment use the following commands:
-```
+
+```sh
 docker-compose down -v
 docker-compose up -d postgres
 go run main.go
