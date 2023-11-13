@@ -26,7 +26,7 @@ func NewAccountsRepository(db *gorm.DB) AccountsRepository {
 
 func (r *accountRepository) ListAll() ([]models.Account, error) {
 	var accounts []models.Account
-	result := r.db.Find(&accounts).Order("id")
+	result := r.db.Order("id").Find(&accounts)
 	if result.Error != nil {
 		return nil, result.Error
 	}

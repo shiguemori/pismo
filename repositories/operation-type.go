@@ -26,7 +26,7 @@ func NewOperationTypesRepository(db *gorm.DB) OperationTypesRepository {
 
 func (r *operationTypeRepository) ListAll() ([]models.OperationType, error) {
 	var operationTypes []models.OperationType
-	result := r.db.Find(&operationTypes).Order("id")
+	result := r.db.Order("id").Find(&operationTypes)
 	if result.Error != nil {
 		return nil, result.Error
 	}

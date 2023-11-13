@@ -754,6 +754,206 @@
 			"name": "Transactions",
 			"item": [
 				{
+					"name": "Second part",
+					"item": [
+						{
+							"name": "Create type 1",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 1,\n    \"amount\": -50,\n    \"balance\": -50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create type 2",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 2,\n    \"amount\": -23.5,\n    \"balance\": -23.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create type 3",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 3,\n    \"amount\": -18.7,\n    \"balance\": -18.7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create discharge",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 60,\n    \"balance\": 60\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create discharge 2",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 100,\n    \"balance\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "List",
 					"event": [
 						{
@@ -822,7 +1022,7 @@
 					]
 				},
 				{
-					"name": "Create",
+					"name": "Create type 1",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -839,7 +1039,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45\n}",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 1,\n    \"amount\": -50,\n    \"balance\": -50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -858,54 +1058,163 @@
 							]
 						}
 					},
-					"response": [
+					"response": []
+				},
+				{
+					"name": "Create type 2",
+					"event": [
 						{
-							"name": "Create",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/transactions",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"transactions"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 05 Nov 2023 00:07:05 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "210"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 123.45,\n    \"event_date\": \"2023-11-04T21:07:05.47776-03:00\",\n    \"Account\": {\n        \"id\": 2,\n        \"document_number\": \"98765432100\"\n    },\n    \"OperationType\": {\n        \"id\": 4,\n        \"description\": \"PAGAMENTO\"\n    }\n}"
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 2,\n    \"amount\": -23.5,\n    \"balance\": -23.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create type 3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 3,\n    \"amount\": -18.7,\n    \"balance\": -18.7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create discharge",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 60,\n    \"balance\": 60\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create discharge 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": 2,\n    \"operation_type_id\": 4,\n    \"amount\": 100,\n    \"balance\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "Get by id",

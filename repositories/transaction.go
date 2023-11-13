@@ -14,6 +14,7 @@ type TransactionsRepository interface {
 	Create(transaction *models.Transaction) (*models.Transaction, error)
 	Update(transaction *models.Transaction) (*models.Transaction, error)
 	Delete(id uint) error
+	UpdateBalance(transaction *models.Transaction) error
 }
 
 type transactionRepository struct {
@@ -28,7 +29,7 @@ func NewTransactionsRepository(db *gorm.DB) TransactionsRepository {
 
 func (r *transactionRepository) ListAll() ([]models.Transaction, error) {
 	var transactions []models.Transaction
-	result := r.db.Preload("Account").Preload("OperationType").Find(&transactions).Order("id")
+	result := r.db.Preload("Account").Preload("OperationType").Order("id").Find(&transactions)
 	if result.Error != nil {
 		return nil, result.Error
 	}
@@ -61,10 +62,21 @@ func (r *transactionRepository) Update(transaction *models.Transaction) (*models
 		return nil, err
 	}
 
-	//if err := r.db.Preload("Account").Preload("OperationType").Find(transaction).Error; err != nil {
-	//	return nil, err
-	//}
+	if err := r.db.Preload("Account").Preload("OperationType").Find(transaction).Error; err != nil {
+		return nil, err
+	}
 	return transaction, nil
+}
+
+func (r *transactionRepository) UpdateBalance(transaction *models.Transaction) error {
+	if err := r.db.Model(transaction).UpdateColumn("balance", transaction.Balance).Error; err != nil {
+		return err
+	}
+
+	if err := r.db.Preload("Account").Preload("OperationType").Find(transaction).Error; err != nil {
+		return err
+	}
+	return nil
 }
 
 func (r *transactionRepository) Delete(id uint) error {
