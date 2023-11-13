@@ -21,7 +21,9 @@ definitions:
         type: integer
       amount:
         type: number
-      eventDate:
+      balance:
+        type: number
+      event_date:
         type: string
       id:
         type: integer

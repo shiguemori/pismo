@@ -654,7 +654,10 @@ const docTemplate = `{
                 "amount": {
                     "type": "number"
                 },
-                "eventDate": {
+                "balance": {
+                    "type": "number"
+                },
+                "event_date": {
                     "type": "string"
                 },
                 "id": {
