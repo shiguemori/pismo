@@ -1,6 +1,7 @@
 package services
 
 import (
+	"math"
 	"pismo/models"
 	"pismo/repositories"
 	"time"
@@ -44,18 +45,19 @@ func (s *transactionsService) CreateTransaction(transaction *models.Transaction)
 		for i, _ := range transactions {
 			if balance > 0 {
 				balanceAux = balance + transactions[i].Balance
-				if balance > transactions[i].Balance {
+				if balance > math.Abs(transactions[i].Balance) {
 					transactions[i].Balance = 0
+					balance = balanceAux
 				} else {
 					transactions[i].Balance = balanceAux
+					balance = 0
 				}
-				_, err = s.repo.Update(&transactions[i])
+				err = s.repo.UpdateBalance(&transactions[i])
 				if err != nil {
 					return nil, err
 				}
-			}
-			if balanceAux > 0 {
-				balance = balanceAux
+			} else {
+				break
 			}
 		}
 		transaction.Balance = balance
