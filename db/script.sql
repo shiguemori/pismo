@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     id SERIAL PRIMARY KEY,
     account_id INTEGER NOT NULL,
     operation_type_id INTEGER NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL,
+    amount  DECIMAL(10, 2) NOT NULL,
+    balance DECIMAL(10, 2) NOT NULL,
     event_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_account
     FOREIGN KEY(account_id)
